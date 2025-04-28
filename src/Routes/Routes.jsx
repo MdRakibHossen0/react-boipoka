@@ -25,14 +25,14 @@ import ReadList from '../pages/ReadList/ReadList';
          Component: About,
        },
        {
+         path: "readList",
+         loader: () => fetch("booksData.json"),
+         Component: ReadList,
+       },
+       {
          path: "/bookDetails/:id",
          loader: () => fetch("./booksData.json"),
          Component: BookDetails,
-       },
-       {
-         path: "readList",
-         loader: () => fetch("./booksData.json"),
-         Component: ReadList,
        },
      ],
    },
