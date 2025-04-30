@@ -1,6 +1,12 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
-import { addToStoreDB } from "../../utility/addTODB";
+ import { addToStoreDB } from "../../utility/addToDB";
+ import Swal from "sweetalert2";
+ import withReactContent from "sweetalert2-react-content";
+
+ const MySwal = withReactContent(Swal);
+  import { ToastContainer, toast } from "react-toastify";
+
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -31,6 +37,15 @@ const BookDetails = () => {
     // if book already exist the show a alert
     // if book not exist then push in the collection or array
 
+
+
+  // Swal.fire({
+  //   title: "Add This Book!",
+  //   icon: "success",
+  //   draggable: true,
+  // });
+toast("Added this Book!");
+
     addToStoreDB(id);
 
 
@@ -47,6 +62,7 @@ const BookDetails = () => {
       <div className="card-body">
         <div>
           <h2 className="card-title">{bookName}</h2>
+          <ToastContainer />
           <p className="">By: {author}</p>
           <p className="divider"></p>
           <p className="lg:text-base">{category}</p>
@@ -87,7 +103,9 @@ const BookDetails = () => {
         </div>
 
         <div className="card-actions lg:justify-end  ">
-          <button onClick={()=>handleMarkAsRead(id)} className="btn  ">Mark as Read</button>
+          <button onClick={() => handleMarkAsRead(id)} className="btn  ">
+            Mark as Read
+          </button>
           <button className="btn btn-primary">Add to WishList</button>
         </div>
       </div>
